@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import axios, * as x from 'axios';
-import { Console } from 'console';
 
 export interface IRunLogicProps {
     answer: string;
@@ -20,7 +19,6 @@ export function RunLogic({ answer }: IRunLogicProps) {
     }, [numericResult]);
 
     function calculateNumber(answer: string) {
-        setNumericResult(stringToNumber(answer));
         postAnswer(findMiddleString("AAAAAA", "ZZZZZZ"));
     }
     return (
@@ -35,7 +33,6 @@ export function RunLogic({ answer }: IRunLogicProps) {
 }
 
 function postAnswer(answer: string) {
-
     axios({
         method: 'post',
         url: `https://torii-word-server.herokuapp.com/checkWord?word=${answer}`,
